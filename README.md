@@ -8,7 +8,7 @@ The `Xaml` parser ignore the `AssemblyLoadContext` and search for the `AssemblyN
 
 This could be problematic if your have two assemblies with the same with different version in different `AssemblyLoadContext`.
 
-In this sample the `xmlns:p=""clr-namespace:Helpers;assembly=Helpers""` trigger the `Xaml` parser to use the `GetLoadedAssembly` method to search for the `Helpers` assembly, and becouse `FirstPlugin` uses `Helpers` version 1 and `SecondPlugin` uses `Helpers` version 2, the `Xaml` parser will always find the first loaded assembly, which make the `Xaml` parser to fail.
+In this sample the `xmlns:p="clr-namespace:Helpers;assembly=Helpers"` trigger the `Xaml` parser to use the `GetLoadedAssembly` method to search for the `Helpers` assembly, and becouse `FirstPlugin` uses `Helpers` version 1 and `SecondPlugin` uses `Helpers` version 2, the `Xaml` parser will always find the first loaded assembly, which make the `Xaml` parser to fail.
 
 ## Workaround
 
