@@ -12,7 +12,7 @@ namespace WPFPluginLoadProblem
         public static void Main()
         {
             PluginLoadContext firstPluginCtx = new PluginLoadContext(
-                Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), @"..\..\..\..\FirstPlugin\bin\Debug\netcoreapp3.0\FirstPlugin.dll"));
+                Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), @"..\..\..\..\FirstPlugin\bin\Debug\net10.0-windows\FirstPlugin.dll"));
             using (firstPluginCtx.EnterContextualReflection())
             {
                 IPlugin firstPlugin = (IPlugin)firstPluginCtx.PluginAssembly.CreateInstance("FirstPlugin.FirstPlugin");
@@ -20,7 +20,7 @@ namespace WPFPluginLoadProblem
             }
 
             PluginLoadContext secondPluginCtx = new PluginLoadContext(
-                Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), @"..\..\..\..\SecondPlugin\bin\Debug\netcoreapp3.0\SecondPlugin.dll"));
+                Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), @"..\..\..\..\SecondPlugin\bin\Debug\net10.0-windows\SecondPlugin.dll"));
             using (secondPluginCtx.EnterContextualReflection())
             {
                 IPlugin secondPlugin = (IPlugin)secondPluginCtx.PluginAssembly.CreateInstance("SecondPlugin.SecondPlugin");
