@@ -14,7 +14,7 @@ In this sample the `xmlns:p="clr-namespace:Helpers;assembly=Helpers"` trigger th
 
 There are another way to reference the assembly in the `Xaml` file without using the `clr-namespace:` syntax, and is using the `XmlnsPrefix` and `XmlnsDefinition` attributes in the `Helpers` assembly.
 
-```
+```C#
 [assembly: XmlnsPrefix("http://helpers/wpf", "p")]
 [assembly: XmlnsDefinition("http://helpers/wpf", "Helpers")]
 ```
@@ -24,8 +24,6 @@ In the `FirstPlugin` and `SecondPlugin` projects, replace the `xmlns:p="clr-name
 After this change the `Xaml` parser will resolve and load the correct assembly in the current `AssemblyLoadContext` and the issue will be fixed.
 
 The sample checks if the `Xaml` parsed uses the correct version of the `Helpers` assembly and show the `AssemblyLoadContext`.
-
-```
 
 ---
 
