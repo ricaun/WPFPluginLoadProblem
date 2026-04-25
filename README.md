@@ -10,6 +10,23 @@ This could be problematic if your have two assemblies with the same with differe
 
 In this sample the `xmlns:p=""clr-namespace:Helpers;assembly=Helpers""` trigger the `Xaml` parser to use the `GetLoadedAssembly` method to search for the `Helpers` assembly, and becouse `FirstPlugin` uses `Helpers` version 1 and `SecondPlugin` uses `Helpers` version 2, the `Xaml` parser will always find the first loaded assembly, which make the `Xaml` parser to fail.
 
+## Workaround
+
+There are another way to reference the assembly in the `Xaml` file without using the `clr-namespace:` syntax, and is using the `XmlnsPrefix` and `XmlnsDefinition` attributes in the `Helpers` assembly.
+
+```
+[assembly: XmlnsPrefix("http://helpers/wpf", "p")]
+[assembly: XmlnsDefinition("http://helpers/wpf", "Helpers")]
+```
+
+In the `FirstPlugin` and `SecondPlugin` projects, replace the `xmlns:p="clr-namespace:Helpers;assembly=Helpers"` with `xmlns:p="http://helpers/wpf"`.
+
+After this change the `Xaml` parser will resolve and load the correct assembly in the current `AssemblyLoadContext` and the issue will be fixed.
+
+The sample checks if the `Xaml` parsed uses the correct version of the `Helpers` assembly and show the `AssemblyLoadContext`.
+
+```
+
 ---
 
 Do you like this project? Please [star this project on GitHub](../../stargazers)!
